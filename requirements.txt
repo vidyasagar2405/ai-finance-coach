@@ -1,0 +1,12 @@
+streamlit
+pandas
+numpy
+langchain
+langgraph
+python-dotenv
+langchain_google_genai
+google-generativeai
+plotly
+langchain_groq
+protobuf
+python-multipart

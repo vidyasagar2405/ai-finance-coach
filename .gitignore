@@ -1,0 +1,4 @@
+coach_env/
+__pycache__/
+.env
+.ruff_cache/

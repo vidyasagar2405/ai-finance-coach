@@ -1,0 +1,16 @@
+date,amount,description,category,subcategory
+2026-04-01,15000,House rent,housing,rent
+2026-04-02,2000,Groceries,food,grocery
+2026-04-03,1800,Swiggy orders,food,online_food
+2026-04-04,1200,Uber rides,transport,uber
+2026-04-05,2500,Restaurant dinner,food,restaurant
+2026-04-06,1500,Electricity bill,bills,electricity
+2026-04-07,999,Netflix subscription,entertainment,subscription
+2026-04-08,3000,Shopping,shopping,amazon
+2026-04-09,45000,Laptop purchase,shopping,electronics   <-- big anomaly
+2026-04-10,2200,Petrol,transport,fuel
+2026-04-11,1800,Groceries,food,grocery
+2026-04-12,2700,Dining out,food,restaurant
+2026-04-13,3500,Clothing,shopping,fashion
+2026-04-14,8000,Medical expense,health,medical
+2026-04-15,6000,Flight booking,travel,flight

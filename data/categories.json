@@ -1,0 +1,125 @@
+{
+  "food": [
+    "groceries",
+    "restaurant",
+    "dining",
+    "fast food",
+    "cafe",
+    "coffee",
+    "swiggy",
+    "zomato",
+    "dominos",
+    "pizza",
+    "kfc",
+    "mehfil"
+  ],
+  "groceries": [
+    "zepto",
+    "blinkit",
+    "bigbasket",
+    "instamart",
+    "supermarket",
+    "grocery"
+  ],
+  "transport": [
+    "fuel",
+    "petrol",
+    "diesel",
+    "uber",
+    "ola",
+    "auto",
+    "cab",
+    "bus",
+    "metro",
+    "taxi"
+  ],
+  "travel": [
+    "flight",
+    "airline",
+    "hotel",
+    "booking",
+    "irctc",
+    "train",
+    "bus travel",
+    "tour",
+    "trip"
+  ],
+  "shopping": [
+    "amazon",
+    "flipkart",
+    "myntra",
+    "zudio",
+    "ajio",
+    "meesho",
+    "electronics",
+    "clothing",
+    "fashion",
+    "mall"
+  ],
+  "entertainment": [
+    "netflix",
+    "spotify",
+    "youtube",
+    "movies",
+    "gaming",
+    "events",
+    "cinema"
+  ],
+  "utilities": [
+    "electricity",
+    "water",
+    "gas",
+    "internet",
+    "wifi",
+    "mobile",
+    "recharge",
+    "broadband",
+    "bill"
+  ],
+  "health": [
+    "pharmacy",
+    "medicine",
+    "hospital",
+    "doctor",
+    "diagnostics",
+    "lab",
+    "gym",
+    "fitness"
+  ],
+  "finance": [
+    "upi",
+    "bank",
+    "atm",
+    "charges",
+    "interest",
+    "loan",
+    "emi",
+    "credit card"
+  ],
+  "subscriptions": [
+    "netflix",
+    "spotify",
+    "prime",
+    "hotstar",
+    "chatgpt",
+    "saas",
+    "cloud"
+  ],
+  "housing": [
+    "rent",
+    "maintenance",
+    "repairs",
+    "cleaning",
+    "furniture"
+  ],
+  "education": [
+    "books",
+    "courses",
+    "fees",
+    "exam",
+    "training"
+  ],
+  "others": [
+    "uncategorized"
+  ]
+}
