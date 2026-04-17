@@ -1,16 +1,17 @@
 import os
+from dotenv import load_dotenv
 from langchain_groq import ChatGroq
-import streamlit as st
 
-# ✅ Groq Model (fast + free)
+load_dotenv()
+
+# Groq Model (fast + free)
 model = ChatGroq(
     model="llama-3.3-70b-versatile",  # best option
     temperature=0.2,
-    api_key = st.secrets["GROQ_API_KEY"]
 )
 
 
-# 🔹 Format structured context
+# Format structured context
 def format_context(context: dict) -> str:
     analysis = context.get("analysis", {})
     anomalies = context.get("anomalies", {})
@@ -101,57 +102,65 @@ System Recommendations:
 # 🔹 Chat function
 def chat_response(question: str, context: dict) -> str:
     try:
-        analysis = context.get("analysis")
-        anomalies = context.get("anomalies")
-        goal = context.get("goal")
-        history = context.get("history", [])
-        monthly_income = context.get("monthly_income", 0)
-        target_amount = context.get("target_amount", 0)
-        months = context.get("months", 0)
+        formatted_context = format_context(context)
+        q = question.lower()
 
-        chat_context = {
-            "analysis": analysis,
-            "anomalies": anomalies,
-            "goal": goal,
-            "history": history,
-            "monthly_income": monthly_income,
-            "target_amount": target_amount,
-            "months": months,
-        }
+        planning_keywords = [
+            "plan", "roadmap", "monthly", "save", "goal",
+            "buy house", "buy car", "retire", "timeline",
+            "actionable", "strategy"
+        ]
 
-        formatted_context = format_context(chat_context)
+        is_planning = any(word in q for word in planning_keywords)
+
+        if is_planning:
+            instructions = """
+                        You are an expert personal finance planner.
+
+                        Create a personalized actionable plan.
+
+                        Instructions:
+                        - Use the provided financial data.
+                        - Give exact monthly targets.
+                        - Use bullet points.
+                        - Include:
+                        1. Goal summary
+                        2. Monthly savings needed
+                        3. Spending cuts by category
+                        4. Month-by-month roadmap
+                        5. Risks to avoid
+                        6. Final recommendation
+                        - Minimum 200 words.
+                        - Be practical and realistic.
+                        """
+        else:
+            instructions = """
+                        You are an expert financial coach.
+
+                        Instructions:
+                        - Answer only finance-related questions.
+                        - Use data if relevant.
+                        - If greeting, reply naturally.
+                        - Be concise.
+                        - Use bullets when useful.
+                        - 3 to 6 lines max.
+                        """
 
         prompt = f"""
-You are an expert financial coach.
+                        Financial Context:
+                        {formatted_context}
 
-Analyze the user's financial data and answer intelligently.
+                        User Question:
+                        {question}
 
-{formatted_context}
-
-Focus on the question, 
-if the Quesition required the analysis then only take the 'formatted context'
-if not answer directly.
-Only answer to question's that were related to the finance, if user ask out of the domain replay politly like
-"I'm only a Finance assistance, ask queries related to finance."
-if question is like a greating or a sendoff type message, respond accordingly.
-
-User Question:
-{question}
-
-Instructions:
-- Answer based on the question of the user.
-- If formatted_context is not required, Then use your knowledge to answer.
-- Be data-driven
-- Use numbers & percentages
-- Identify overspending
-- Consider goals & anomalies
-- Give actionable advice
-- Avoid repeating same answer
-- Keep it concise (3-5 lines)
-"""
+                        {instructions}
+                        """
 
         response = model.invoke(prompt)
         return response.content
+
+    except Exception as e:
+        return f"Error: {str(e)}"
 
     except Exception as e:
         return f"Error: {str(e)}"
